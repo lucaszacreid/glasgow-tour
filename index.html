@@ -12,27 +12,25 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
   <style>
     /* ─── DESIGN TOKENS ─────────────────────────────────────────────── */
     :root {
-      --navy:        #080808;
-      --navy-mid:    #0E0E0E;
-      --navy-light:  #191919;
-      --cream:       #F8F8F8;
-      --cream-dim:   #DEDEDE;
-      --cream-muted: #909090;
-      --gold:        #C8C8C8;
-      --gold-light:  #F0F0F0;
-      --text-body:   #828282;
-      --card-bg:     rgba(14, 14, 14, 0.93);
-      --gold-border: 1px solid rgba(255,255,255,0.12);
+      --navy:        #FFFFFF;
+      --navy-mid:    #F4F4F4;
+      --navy-light:  #E8E8E8;
+      --cream:       #0A0A0A;
+      --cream-dim:   #2A2A2A;
+      --cream-muted: #6A6A6A;
+      --gold:        #0A0A0A;
+      --gold-light:  #2A2A2A;
+      --text-body:   #555555;
+      --card-bg:     #FFFFFF;
+      --gold-border: 1px solid rgba(0,0,0,0.09);
 
-      --font-heading: 'Cormorant Garamond', Georgia, serif;
+      --font-heading: 'Poppins', system-ui, sans-serif;
       --font-body:    'Poppins', system-ui, sans-serif;
 
       --section-py: 6rem;
@@ -180,9 +178,8 @@
     }
     .hero-title {
       font-size: clamp(2.1rem, 4.8vw, 4rem); color: var(--cream);
-      font-style: italic; font-weight: 600; line-height: 1.15;
+      font-weight: 700; line-height: 1.15;
       margin-bottom: 1.25rem;
-      text-shadow: 0 2px 28px rgba(0,0,0,.7), 0 0 80px rgba(0,0,0,.5);
     }
     .hero-sub {
       font-size: clamp(.9rem, 1.6vw, 1.05rem); color: var(--cream-dim);
@@ -203,6 +200,36 @@
     .scroll-bar { width: 1px; height: 38px; background: linear-gradient(to bottom, var(--gold), transparent); animation: pulse 2s ease-in-out infinite; }
     @keyframes pulse { 0%,100% { opacity: .3; } 50% { opacity: 1; } }
 
+    /* ── Keep nav + hero + dark sections legible on their dark backgrounds ── */
+    .nav:not(.scrolled) .nav-logo           { color: #F5F5F5; }
+    .nav:not(.scrolled) .nav-logo span      { color: #C0C0C0; }
+    .nav:not(.scrolled) .nav-links a        { color: rgba(255,255,255,.72); }
+    .nav:not(.scrolled) .nav-links a:hover  { color: #FFF; }
+    .nav:not(.scrolled) .nav-cta            { border-color: rgba(255,255,255,.42) !important; color: rgba(255,255,255,.72) !important; }
+    .nav:not(.scrolled) .nav-cta:hover      { background: rgba(255,255,255,.1) !important; color: #FFF !important; }
+    .nav:not(.scrolled) .nav-hamburger span { background: #F0F0F0; }
+    #hero .hero-title  { color: #F5F5F5; text-shadow: 0 2px 28px rgba(0,0,0,.7), 0 0 80px rgba(0,0,0,.5); }
+    #hero .hero-sub    { color: rgba(255,255,255,.68); text-shadow: 0 1px 12px rgba(0,0,0,.5); }
+    #hero .hero-scroll span { color: rgba(255,255,255,.35); }
+    #hero .scroll-bar  { background: linear-gradient(to bottom, rgba(255,255,255,.5), transparent); }
+    #hero .btn-ghost   { color: #F0F0F0; border-color: rgba(255,255,255,.38); }
+    #hero .btn-ghost:hover { color: #FFF; border-color: rgba(255,255,255,.65); }
+    #booking h2                { color: #F0F0F0; }
+    #booking .booking-sub      { color: rgba(255,255,255,.55); }
+    #booking .booking-note     { color: rgba(255,255,255,.32); }
+    #booking .pretitle         { color: rgba(255,255,255,.38); }
+    #booking .btn-gold         { background: #F0F0F0; color: #0A0A0A; border-color: #F0F0F0; }
+    #booking .btn-gold:hover   { background: #FFF; color: #0A0A0A; border-color: #FFF; }
+    footer h3                  { color: #E8E8E8; }
+    footer .tag                { color: rgba(255,255,255,.38); }
+    footer .footer-brand p     { color: rgba(255,255,255,.35); }
+    footer .footer-col h4      { color: rgba(255,255,255,.3); }
+    footer .footer-links a     { color: rgba(255,255,255,.4); }
+    footer .footer-links a:hover  { color: #E8E8E8; }
+    footer .footer-bottom p    { color: rgba(255,255,255,.28); }
+    footer .footer-bottom a    { color: rgba(255,255,255,.4); }
+    footer .footer-bottom a:hover { color: rgba(255,255,255,.7); }
+
     /* ─── EXPERIENCE ─────────────────────────────────────────────────── */
     #experience { background: var(--navy-mid); border-top: var(--gold-border); border-bottom: var(--gold-border); }
     .exp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2.5rem; }
@@ -211,10 +238,10 @@
     .exp-card {
       text-align: center; padding: 2.75rem 1.75rem;
       border: var(--gold-border); border-radius: 3px;
-      background: rgba(255,255,255,.02);
-      transition: border-color .3s, transform .3s;
+      background: #FFFFFF; box-shadow: 0 2px 16px rgba(0,0,0,.06);
+      transition: border-color .3s, transform .3s, box-shadow .3s;
     }
-    .exp-card:hover { border-color: rgba(201,168,76,.6); transform: translateY(-4px); }
+    .exp-card:hover { border-color: rgba(0,0,0,.2); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,.1); }
     .exp-icon { width: 52px; height: 52px; margin: 0 auto 1.5rem; stroke: var(--gold); fill: none; stroke-width: 1.5; }
     .exp-card h3 { font-size: 1.25rem; margin-bottom: .65rem; }
     .exp-card p  { font-size: .93rem; line-height: 1.75; }
@@ -247,12 +274,13 @@
     .pkg-card {
       background: var(--card-bg); border: var(--gold-border); border-radius: 4px;
       padding: 2.5rem 2rem; position: relative;
+      box-shadow: 0 2px 16px rgba(0,0,0,.06);
       transition: transform .3s, box-shadow .3s, border-color .3s;
     }
-    .pkg-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,.4); }
+    .pkg-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,.12); }
     .pkg-card.featured {
       border: 2px solid var(--gold); transform: scale(1.025);
-      background: rgba(22,42,62,.95); box-shadow: 0 16px 50px rgba(0,0,0,.35);
+      background: #FFFFFF; box-shadow: 0 8px 40px rgba(0,0,0,.12);
     }
     .pkg-card.featured:hover { transform: scale(1.025) translateY(-6px); }
 
@@ -269,7 +297,7 @@
     .price-from  { font-size: .8rem; color: var(--text-body); }
     .price-amt   { font-family: var(--font-heading); font-size: 2.2rem; color: var(--cream); font-weight: 700; }
     .price-note  { font-size: .78rem; color: var(--text-body); margin-bottom: 1.75rem; }
-    .pkg-rule    { width: 100%; height: 1px; background: rgba(201,168,76,.18); margin-bottom: 1.5rem; }
+    .pkg-rule    { width: 100%; height: 1px; background: rgba(0,0,0,.08); margin-bottom: 1.5rem; }
     .pkg-features { display: flex; flex-direction: column; gap: .7rem; margin-bottom: 2rem; }
     .pkg-features li { display: flex; gap: .7rem; align-items: flex-start; font-size: .9rem; color: var(--text-body); line-height: 1.5; }
     .check-icon { width: 17px; min-width: 17px; height: 17px; margin-top: 2px; color: var(--gold); }
@@ -302,20 +330,20 @@
     }
     .ewan-frame {
       position: absolute; top: -14px; left: -14px; right: 14px; bottom: 14px;
-      border: 1px solid rgba(201,168,76,.35); border-radius: 2px; z-index: -1;
+      border: 1px solid rgba(0,0,0,.1); border-radius: 2px; z-index: -1;
     }
     .ewan-text .pretitle,
     .ewan-text .section-title { text-align: left; }
     .ewan-bio  { font-size: .98rem; color: var(--text-body); line-height: 1.9; margin-bottom: 1rem; }
     .badges    { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.75rem; }
-    .badge     { padding: .45rem 1rem; border: 1px solid rgba(201,168,76,.35); border-radius: 20px; font-size: .78rem; color: var(--cream-dim); font-weight: 500; letter-spacing: .04em; background: rgba(201,168,76,.04); }
+    .badge     { padding: .45rem 1rem; border: 1px solid rgba(0,0,0,.12); border-radius: 20px; font-size: .78rem; color: var(--cream-dim); font-weight: 500; letter-spacing: .04em; background: rgba(0,0,0,.03); }
 
     /* ─── HOW IT WORKS ───────────────────────────────────────────────── */
     #how-it-works { background: var(--navy-mid); border-top: var(--gold-border); border-bottom: var(--gold-border); }
     .steps-wrap { display: grid; grid-template-columns: 1fr 60px 1fr 60px 1fr; align-items: center; gap: 0; }
     @media (max-width: 760px) { .steps-wrap { grid-template-columns: 1fr; gap: 2rem; } .step-arrow { display: none; } }
     .step       { text-align: center; padding: 2rem 1.25rem; }
-    .step-num   { width: 62px; height: 62px; border: 2px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-family: var(--font-heading); font-size: 1.45rem; color: var(--gold); font-style: italic; }
+    .step-num   { width: 62px; height: 62px; border: 2px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-family: var(--font-heading); font-size: 1.45rem; color: var(--gold); font-weight: 600; }
     .step h3    { font-size: 1.15rem; margin-bottom: .65rem; }
     .step p     { font-size: .9rem; line-height: 1.65; }
     .step-arrow { display: flex; justify-content: center; padding-bottom: 1rem; }
@@ -329,6 +357,7 @@
     .test-card {
       background: var(--card-bg); border: var(--gold-border); border-radius: 4px;
       padding: 2.25rem 2rem; position: relative;
+      box-shadow: 0 2px 16px rgba(0,0,0,.06);
     }
     .test-card::before {
       content: '\201C'; position: absolute; top: 1rem; left: 1.5rem;
@@ -339,7 +368,7 @@
     .star       { color: var(--gold); font-size: .95rem; }
     .test-text  { font-size: .93rem; color: var(--text-body); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic; }
     .test-author { display: flex; align-items: center; gap: .85rem; padding-top: 1rem; border-top: var(--gold-border); }
-    .author-avatar { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(201,168,76,.3); }
+    .author-avatar { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(0,0,0,.1); }
     .author-info h4   { font-size: .88rem; font-family: var(--font-body); font-weight: 600; color: var(--cream); margin-bottom: .1rem; }
     .author-info span { font-size: .75rem; color: var(--gold); }
 
@@ -424,7 +453,7 @@
   <div class="hero-fade"></div>
 
   <div class="hero-content fade-up">
-    <h1 class="hero-title">Glasgow, The Way It Was<br>Always Meant To Be Seen</h1>
+    <h1 class="hero-title">Tour Glasgow In A<br>Vintage Mercedes</h1>
     <p class="hero-sub">Private tours of Glasgow's greatest landmarks — vintage Mercedes, local guide, from £95.</p>
     <div class="hero-ctas">
       <a href="#packages" class="btn btn-gold">Book Your Tour</a>
@@ -486,23 +515,10 @@
 </section>
 
 
-<!-- ══════════════════════════════════════════════════════════════════════
-     3. THE ROUTE — Interactive Map
-════════════════════════════════════════════════════════════════════════ -->
-<section id="route" class="section" aria-labelledby="route-heading">
-  <div class="container">
-    <div class="section-header fade-up">
-      <p class="pretitle">The Journey</p>
-      <h2 class="section-title" id="route-heading">Seven Stops, One Unforgettable City</h2>
-      <div class="divider"></div>
-      <p class="section-sub">A curated route through Glasgow's most iconic landmarks — and a few the guidebooks miss entirely.</p>
-    </div>
+<!-- route section removed — map not supported on all mobile devices -->
 
-    <div class="fade-up">
-      <div id="tour-map" aria-label="Interactive map of the Glasgow tour route"></div>
-    </div>
-
-    <div class="stops-legend fade-up">
+<!-- STOPS LEGEND kept as standalone section if needed later -->
+<!-- <div class="stops-legend fade-up">
       <div class="stop-item">
         <span class="stop-num">1</span>
         <div>
@@ -552,9 +568,7 @@
           <p>Where Glasgow's merchant wealth built its grandest streets</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </div> --> <!-- end commented stops-legend -->
 
 
 <!-- ══════════════════════════════════════════════════════════════════════
@@ -715,8 +729,8 @@
       <div class="step-arrow" aria-hidden="true"></div>
       <div class="step fade-up d3">
         <div class="step-num" aria-label="Step three">3</div>
-        <h3>Meet Ewan at Kelvinbridge</h3>
-        <p>Arrive at Kelvinbridge — he'll be there, engine running. From that moment on, Glasgow takes care of the rest.</p>
+        <h3>We Come To You</h3>
+        <p>Choose your pickup spot anywhere in Glasgow — Ewan will collect you there, engine running, at no extra cost. The rest takes care of itself.</p>
       </div>
     </div>
   </div>
@@ -800,7 +814,7 @@
       <p class="booking-sub">Private tours available 7 days a week — groups up to 4 passengers</p>
       <!-- Calendly link: replace YOURLINK with your Calendly username slug -->
       <a href="https://calendly.com/YOURLINK" class="btn btn-gold btn-large" target="_blank" rel="noopener">Book Now</a>
-      <p class="booking-note">All tours depart from Kelvinbridge, Glasgow &nbsp;·&nbsp; Easy to find, free to park nearby</p>
+      <p class="booking-note">Pickup from anywhere in Glasgow &nbsp;·&nbsp; No extra cost &nbsp;·&nbsp; 7 days a week</p>
     </div>
   </div>
 
@@ -862,7 +876,7 @@
         <h4>Navigate</h4>
         <ul class="footer-links">
           <li><a href="#experience">The Experience</a></li>
-          <li><a href="#route">The Route</a></li>
+  
           <li><a href="#packages">Packages</a></li>
           <li><a href="#ewan">Meet Ewan</a></li>
           <li><a href="#how-it-works">How It Works</a></li>
@@ -893,8 +907,6 @@
 <!-- ══════════════════════════════════════════════════════════════════════
      SCRIPTS
 ════════════════════════════════════════════════════════════════════════ -->
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WLI=" crossorigin=""></script>
 
 <!--
   CALENDLY WIDGET SCRIPT
@@ -944,56 +956,6 @@
     }, 200);
   });
 
-  /* ── LEAFLET MAP ── */
-  const stops = [
-    { n:1, name:'Kelvinbridge',                    desc:'Our starting point — the elegant Victorian bridge over the River Kelvin.',               lat: 55.8714, lng: -4.2944 },
-    { n:2, name:'Glasgow University — The Cloisters', desc:'The breathtaking Gothic Revival heart of Scotland\'s second oldest university.',       lat: 55.8723, lng: -4.2887 },
-    { n:3, name:'The Finnieston Crane',             desc:'A 175-foot titan of the River Clyde — a monument to Glasgow\'s industrial might.',      lat: 55.8604, lng: -4.2928 },
-    { n:4, name:'Duke of Wellington Statue',        desc:'Glasgow\'s most beloved landmark — the Iron Duke, perpetually crowned with a cone.',    lat: 55.8608, lng: -4.2510 },
-    { n:5, name:'George Square',                    desc:'Glasgow\'s grand civic heart, surrounded by magnificent Victorian architecture.',        lat: 55.8617, lng: -4.2513 },
-    { n:6, name:'The Riverside — Hydro &amp; Armadillo', desc:'The SSE Hydro, Clyde Auditorium &amp; Science Centre — modern Glasgow at its boldest.', lat: 55.8601, lng: -4.2863 },
-    { n:7, name:'Merchant City',                    desc:'Where Glasgow\'s 18th-century tobacco lords built their wealth — and their grand streets.', lat: 55.8575, lng: -4.2407 }
-  ];
-
-  const map = L.map('tour-map', {
-    center: [55.864, -4.271],
-    zoom: 13,
-    scrollWheelZoom: false,
-    zoomControl: true
-  });
-
-  /* CartoDB Positron — clean, minimal, premium feel */
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>',
-    subdomains: 'abcd',
-    maxZoom: 20
-  }).addTo(map);
-
-  function makeIcon(n) {
-    return L.divIcon({
-      className: '',
-      html: `<div style="width:30px;height:30px;background:#111;border:2.5px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Poppins,sans-serif;font-weight:700;font-size:12px;color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.4);cursor:pointer">${n}</div>`,
-      iconSize: [30, 30],
-      iconAnchor: [15, 15],
-      popupAnchor: [0, -18]
-    });
-  }
-
-  const coords = stops.map(s => [s.lat, s.lng]);
-
-  stops.forEach(s => {
-    L.marker([s.lat, s.lng], { icon: makeIcon(s.n) })
-      .addTo(map)
-      .bindPopup(`<h4>${s.name}</h4><p>${s.desc}</p>`, { maxWidth: 230 });
-  });
-
-  /* Dashed gold polyline */
-  L.polyline(coords, {
-    color: '#111111', weight: 2, opacity: .5,
-    dashArray: '6 6', lineJoin: 'round'
-  }).addTo(map);
-
-  map.fitBounds(L.latLngBounds(coords), { padding: [44, 44] });
 </script>
 
 </body>
